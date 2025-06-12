@@ -1,0 +1,67 @@
+<section class="py-20 bg-[#0c0c0d]">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">How It Works</h2>
+      <p class="text-xl text-[#cccccc] max-w-3xl mx-auto">
+        Getting started with Apex Automation is simple and takes just a few moments.
+      </p>
+    </div>
+
+    <div class="flex flex-col md:flex-row justify-center items-center md:items-start gap-8 md:gap-16">
+      {% set steps = [
+        {
+          icon: "settings",
+          title: "Configure",
+          description: "Use our clean UI to set your game mode and preferences in seconds."
+        },
+        {
+          icon: "play",
+          title: "Launch",
+          description: "Start the bot with a single click or a global hotkey."
+        },
+        {
+          icon: "trophy",
+          title: "Dominate",
+          description: "Go AFK and let Apex Automation handle the grind. Come back to a leveled-up account."
+        }
+      ] %}
+
+      {% for step in steps %}
+        <div class="text-center max-w-xs">
+          <div class="relative mb-6">
+            <div class="w-24 h-24 bg-[#131314] rounded-full flex items-center justify-center mx-auto border border-[#30363d]">
+              {% if step.icon == "settings" %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
+                </svg>
+              {% elif step.icon == "play" %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
+                </svg>
+              {% elif step.icon == "trophy" %}
+                <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"></path>
+                  <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"></path>
+                  <path d="M4 22h16"></path>
+                  <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"></path>
+                  <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"></path>
+                  <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"></path>
+                </svg>
+              {% endif %}
+            </div>
+            <div class="absolute top-0 left-1/2 -translate-x-1/2 -translate-y-1/2 bg-[#5285a6] text-white w-8 h-8 rounded-full flex items-center justify-center font-bold">
+              {{ loop.index }}
+            </div>
+
+            {% if not loop.last %}
+              <div class="hidden md:block absolute top-12 left-full w-16 h-0.5 bg-gradient-to-r from-[#5285a6] to-transparent"></div>
+            {% endif %}
+          </div>
+          <h3 class="text-2xl font-bold text-white mb-3">{{ step.title }}</h3>
+          <p class="text-[#cccccc]">{{ step.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

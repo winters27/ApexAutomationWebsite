@@ -1,0 +1,96 @@
+<header class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 py-5" id="navbar">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="flex items-center justify-between">
+      <div class="flex items-center">
+        <a href="/" class="flex items-center">
+          <div class="w-10 h-10 mr-2">
+            <img src="/images/shark-logo.png" alt="Apex Automation Logo" class="w-full h-full object-contain">
+          </div>
+          <span class="text-white font-bold text-xl">Apex Automation</span>
+        </a>
+      </div>
+
+      <!-- Desktop Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#features" class="text-[#E0E0E0] hover:text-white transition-colors">Features</a>
+        <a href="#pricing" class="text-[#E0E0E0] hover:text-white transition-colors">Pricing</a>
+        <a href="#faq" class="text-[#E0E0E0] hover:text-white transition-colors">FAQ</a>
+        <a href="https://discord.gg/apexautomation" target="_blank" rel="noopener noreferrer" class="text-[#E0E0E0] hover:text-white transition-colors">Discord</a>
+        <button 
+          onclick="scrollToPricing()" 
+          class="bg-white/5 backdrop-blur-md border border-[#5285a6] text-white hover:bg-white/10 hover:shadow-[0_0_20px_rgba(82,133,166,0.4)] transition-all duration-300 px-4 py-2 rounded-md"
+        >
+          Pricing
+        </button>
+      </nav>
+
+      <!-- Mobile Menu Button -->
+      <button class="md:hidden text-white" id="mobile-menu-button">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="menu-icon">
+          <line x1="3" y1="12" x2="21" y2="12"></line>
+          <line x1="3" y1="6" x2="21" y2="6"></line>
+          <line x1="3" y1="18" x2="21" y2="18"></line>
+        </svg>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="close-icon hidden">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile Navigation -->
+    <nav class="md:hidden pt-4 pb-2 flex-col space-y-4 hidden" id="mobile-menu">
+      <a href="#features" class="text-[#E0E0E0] hover:text-white transition-colors">Features</a>
+      <a href="#pricing" class="text-[#E0E0E0] hover:text-white transition-colors">Pricing</a>
+      <a href="#faq" class="text-[#E0E0E0] hover:text-white transition-colors">FAQ</a>
+      <a href="https://discord.gg/apexautomation" target="_blank" rel="noopener noreferrer" class="text-[#E0E0E0] hover:text-white transition-colors">Discord</a>
+      <button 
+        onclick="scrollToPricing()" 
+        class="bg-white/5 backdrop-blur-md border border-[#5285a6] text-white hover:bg-white/10 hover:shadow-[0_0_20px_rgba(82,133,166,0.4)] transition-all duration-300 w-full px-4 py-2 rounded-md"
+      >
+        Pricing
+      </button>
+    </nav>
+  </div>
+</header>
+
+<script>
+  // Handle navbar scroll effect
+  window.addEventListener('scroll', function() {
+    const navbar = document.getElementById('navbar');
+    if (window.scrollY > 10) {
+      navbar.classList.remove('py-5');
+      navbar.classList.add('bg-[#0c0c0d]/95', 'backdrop-blur-sm', 'py-3', 'shadow-md');
+    } else {
+      navbar.classList.add('py-5');
+      navbar.classList.remove('bg-[#0c0c0d]/95', 'backdrop-blur-sm', 'py-3', 'shadow-md');
+    }
+  });
+  
+  // Mobile menu toggle
+  document.getElementById('mobile-menu-button').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+    
+    mobileMenu.classList.toggle('hidden');
+    menuIcon.classList.toggle('hidden');
+    closeIcon.classList.toggle('hidden');
+  });
+  
+  // Scroll to pricing section
+  function scrollToPricing() {
+    const pricingSection = document.getElementById('pricing');
+    if (pricingSection) {
+      pricingSection.scrollIntoView({ behavior: 'smooth' });
+    }
+    
+    // Close mobile menu if open
+    const mobileMenu = document.getElementById('mobile-menu');
+    if (!mobileMenu.classList.contains('hidden')) {
+      mobileMenu.classList.add('hidden');
+      document.querySelector('.menu-icon').classList.remove('hidden');
+      document.querySelector('.close-icon').classList.add('hidden');
+    }
+  }
+</script>

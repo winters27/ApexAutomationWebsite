@@ -1,0 +1,76 @@
+<footer class="bg-[#0c0c0d] border-t border-[#30363d] py-12">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="flex flex-col md:flex-row justify-between items-center">
+      <div class="mb-6 md:mb-0">
+        <a href="/" class="flex items-center">
+          <div class="w-10 h-10 mr-2">
+            <img src="/images/shark-logo.png" alt="Apex Automation Logo" class="w-full h-full object-contain">
+          </div>
+          <span class="text-white font-bold text-xl">Apex Automation</span>
+        </a>
+        <p class="text-[#cccccc] mt-2 max-w-md">
+          Level up your Call of Duty experience with the ultimate automation tool.
+        </p>
+      </div>
+
+      <div class="flex flex-col md:flex-row gap-6 md:gap-12">
+        <div>
+          <h3 class="text-white font-semibold mb-3">Legal</h3>
+          <ul class="space-y-2">
+            <li>
+              <a href="/terms" class="text-[#cccccc] hover:text-white transition-colors">
+                Terms of Service
+              </a>
+            </li>
+            <li>
+              <a href="/privacy" class="text-[#cccccc] hover:text-white transition-colors">
+                Privacy Policy
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-white font-semibold mb-3">Community</h3>
+          <ul class="space-y-2">
+            <li>
+              <a
+                href="https://discord.gg/apexautomation"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#cccccc] hover:text-white transition-colors"
+              >
+                Discord
+              </a>
+            </li>
+            <li>
+              <a
+                href="https://filedn.com/lvvwxquPDhVHVPDbYeHJc6B/apexautomation_guide.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="text-[#cccccc] hover:text-white transition-colors"
+              >
+                Support
+              </a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-t border-[#30363d] mt-8 pt-8 text-center">
+      <p class="text-[#cccccc]">© {{ currentYear }} Apex Automation. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Set current year
+  document.addEventListener('DOMContentLoaded', function() {
+    const yearElements = document.querySelectorAll('.current-year');
+    const currentYear = new Date().getFullYear();
+    yearElements.forEach(el => {
+      el.textContent = currentYear;
+    });
+  });
+</script>

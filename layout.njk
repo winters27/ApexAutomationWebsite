@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ title | default('Apex Automation - Level Up Your Call of Duty Experience') }}</title>
+  <meta name="description" content="{{ description | default('Apex Automation is your ultimate co-pilot for Call of Duty. Level up your rank, weapons, and battle pass effortlessly while you\'re AFK.') }}">
+  
+  <!-- Tailwind CSS -->
+  <link href="/css/tailwind.css" rel="stylesheet">
+  
+  <!-- Inter Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  
+  <!-- Custom Styles -->
+  <style>
+    :root {
+      --background: 0 0% 3.9%;
+      --foreground: 0 0% 98%;
+      --card: 0 0% 7.5%;
+      --card-foreground: 0 0% 98%;
+      --popover: 0 0% 3.9%;
+      --popover-foreground: 0 0% 98%;
+      --primary: 200 30% 58%;
+      --primary-foreground: 0 0% 98%;
+      --secondary: 0 0% 14.9%;
+      --secondary-foreground: 0 0% 98%;
+      --muted: 0 0% 14.9%;
+      --muted-foreground: 0 0% 63.9%;
+      --accent: 0 0% 14.9%;
+      --accent-foreground: 0 0% 98%;
+      --destructive: 0 62.8% 30.6%;
+      --destructive-foreground: 0 0% 98%;
+      --border: 0 0% 14.9%;
+      --input: 0 0% 14.9%;
+      --ring: 200 30% 58%;
+      --radius: 0.5rem;
+    }
+    
+    body {
+      background-color: #0c0c0d;
+      color: #e0e0e0;
+      font-family: "Inter", sans-serif;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    @keyframes gradient-flow {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+    
+    .animate-gradient-flow {
+      background-size: 200% 200%;
+      animation: gradient-flow 8s ease infinite;
+    }
+    
+    .gradient-text {
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      background-image: linear-gradient(to right, #5285a6, #66c2ff, #5285a6);
+      filter: drop-shadow(0 0 8px rgba(102,194,255,0.6)) drop-shadow(0 2px 2px rgba(0,0,0,0.8));
+    }
+  </style>
+</head>
+<body class="min-h-screen bg-[#0c0c0d] text-[#E0E0E0]">
+  {% include "navbar.njk" %}
+  
+  {% block content %}
+  <!-- Content will be injected here -->
+  {% endblock %}
+  
+  {% include "footer.njk" %}
+  
+  <!-- Scripts -->
+  <script src="/js/main.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>

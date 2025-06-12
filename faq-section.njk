@@ -1,0 +1,88 @@
+<section id="faq" class="py-20 bg-[#0c0c0d]">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Frequently Asked Questions</h2>
+      <p class="text-xl text-[#cccccc] max-w-3xl mx-auto">Got questions? We've got answers.</p>
+    </div>
+
+    <div class="max-w-3xl mx-auto">
+      {% set faqs = [
+        {
+          question: "Is this safe to use?",
+          answer: "Your account's safety is our top priority. Our software is engineered to interact with games from your desktop, just as you would. It doesn't inject software or modify game files in any way, ensuring it operates in a manner that is both reliable and respects the integrity of the game. Because Apex Automation only replicates the actions of a physical keyboard and mouse, it's designed to be indistinguishable from a human player."
+        },
+        {
+          question: "What are the system requirements?",
+          answer: "Windows 10/11. The game must be set to English and run in Windowed mode. For full details, see our setup guide."
+        },
+        {
+          question: "Do I need a high-end PC?",
+          answer: "If your PC can run Call of Duty, it can run Apex Automation. The bot is lightweight and optimized for performance."
+        },
+        {
+          question: "What payment methods do you accept?",
+          answer: "We accept all major credit cards and PayPal through our secure payment processor."
+        },
+        {
+          question: "Can I use this on multiple accounts?",
+          answer: "Yes, your Apex Automation license allows you to use the software on multiple accounts, but only one at a time."
+        },
+        {
+          question: "Is there a refund policy?",
+          answer: "We offer a 3-day money-back guarantee if the software doesn't work as described. Please contact our support team through Discord for assistance."
+        }
+      ] %}
+
+      <div class="space-y-4" id="faq-accordion">
+        {% for faq in faqs %}
+          <div class="border border-[#30363d] rounded-lg overflow-hidden bg-[#131314]" id="faq-item-{{ loop.index }}">
+            <button
+              class="w-full text-left p-4 flex justify-between items-center focus:outline-none"
+              onclick="toggleFaq('{{ loop.index }}')"
+              aria-expanded="false"
+              aria-controls="faq-content-{{ loop.index }}"
+            >
+              <span class="text-lg font-medium text-white">{{ faq.question }}</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-down-{{ loop.index }}">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="chevron-up-{{ loop.index }} hidden">
+                <polyline points="18 15 12 9 6 15"></polyline>
+              </svg>
+            </button>
+
+            <div id="faq-content-{{ loop.index }}" class="hidden p-4 pt-0 text-[#cccccc] border-t border-[#30363d]">
+              {{ faq.answer }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleFaq(index) {
+    const content = document.getElementById(`faq-content-${index}`);
+    const chevronDown = document.querySelector(`.chevron-down-${index}`);
+    const chevronUp = document.querySelector(`.chevron-up-${index}`);
+    const faqItem = document.getElementById(`faq-item-${index}`);
+    const button = faqItem.querySelector('button');
+    
+    // Toggle content visibility
+    content.classList.toggle('hidden');
+    
+    // Toggle chevron icons
+    chevronDown.classList.toggle('hidden');
+    chevronUp.classList.toggle('hidden');
+    
+    // Toggle border color
+    if (content.classList.contains('hidden')) {
+      faqItem.classList.remove('border-[#5285a6]');
+      button.setAttribute('aria-expanded', 'false');
+    } else {
+      faqItem.classList.add('border-[#5285a6]');
+      button.setAttribute('aria-expanded', 'true');
+    }
+  }
+</script>

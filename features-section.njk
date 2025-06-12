@@ -1,0 +1,97 @@
+<section id="features" class="py-20 bg-[#0c0c0d]">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Powerful Features</h2>
+      <p class="text-xl text-[#cccccc] max-w-3xl mx-auto">
+        Apex Automation comes packed with everything you need to maximize your Call of Duty progress without the
+        grind.
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% set features = [
+        {
+          icon: "layers",
+          title: "Multi-Mode Support",
+          description: "Works seamlessly with popular modes like Warzone and Black Ops Prop Hunt."
+        },
+        {
+          icon: "bot",
+          title: "Total Automation",
+          description: "From auto-prestige and loadout cycling to weapon switching for maximum XP."
+        },
+        {
+          icon: "zap",
+          title: "Smart XP Token Usage",
+          description: "Automatically detects and activates the correct Double XP tokens to boost your gains."
+        },
+        {
+          icon: "shield",
+          title: "Customizable & Safe",
+          description: "Configure hotkeys, timers, and behavior. Designed with system safety and reliability in mind."
+        },
+        {
+          icon: "monitor",
+          title: "Launcher Agnostic",
+          description: "Full support for Steam, Battle.net, and Game Pass versions of the game."
+        },
+        {
+          icon: "cpu",
+          title: "Lightweight Performance",
+          description: "Optimized to run in the background without impacting your system's performance."
+        }
+      ] %}
+
+      {% for feature in features %}
+        <div class="bg-[#131314] p-6 rounded-lg border border-[#30363d] transition-all duration-300 hover:border-[#5285a6]/50 hover:shadow-[0_0_15px_rgba(82,133,166,0.15)]">
+          <div class="mb-4">
+            {% if feature.icon == "layers" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
+                <polyline points="2 17 12 22 22 17"></polyline>
+                <polyline points="2 12 12 17 22 12"></polyline>
+              </svg>
+            {% elif feature.icon == "bot" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="11" width="18" height="10" rx="2"></rect>
+                <circle cx="12" cy="5" r="2"></circle>
+                <path d="M12 7v4"></path>
+                <line x1="8" y1="16" x2="8" y2="16"></line>
+                <line x1="16" y1="16" x2="16" y2="16"></line>
+              </svg>
+            {% elif feature.icon == "zap" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"></polygon>
+              </svg>
+            {% elif feature.icon == "shield" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+              </svg>
+            {% elif feature.icon == "monitor" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                <line x1="8" y1="21" x2="16" y2="21"></line>
+                <line x1="12" y1="17" x2="12" y2="21"></line>
+              </svg>
+            {% elif feature.icon == "cpu" %}
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#5285a6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                <rect x="9" y="9" width="6" height="6"></rect>
+                <line x1="9" y1="1" x2="9" y2="4"></line>
+                <line x1="15" y1="1" x2="15" y2="4"></line>
+                <line x1="9" y1="20" x2="9" y2="23"></line>
+                <line x1="15" y1="20" x2="15" y2="23"></line>
+                <line x1="20" y1="9" x2="23" y2="9"></line>
+                <line x1="20" y1="14" x2="23" y2="14"></line>
+                <line x1="1" y1="9" x2="4" y2="9"></line>
+                <line x1="1" y1="14" x2="4" y2="14"></line>
+              </svg>
+            {% endif %}
+          </div>
+          <h3 class="text-xl font-semibold text-white mb-3">{{ feature.title }}</h3>
+          <p class="text-[#cccccc]">{{ feature.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,215 @@
+<section id="pricing" class="py-20 bg-[#0c0c0d]">
+  <div class="container mx-auto px-4 md:px-6">
+    <div class="text-center mb-16">
+      <h2 class="text-3xl md:text-4xl font-bold text-white mb-4">Flexible Pricing Plans</h2>
+      <p class="text-xl text-[#cccccc] max-w-3xl mx-auto">
+        Choose the perfect duration for your grinding needs. All plans include full access to Apex Automation.
+      </p>
+      <div class="mt-6 flex items-center justify-center gap-4 text-sm text-[#cccccc]">
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Secure payments by SellAuth</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Instant license delivery</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+          <span>Multiple payment methods</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+      {% set plans = [
+        {
+          name: "Daily",
+          price: "$5",
+          period: "per day",
+          description: "Perfect for testing Apex Automation",
+          features: ["All Features Included", "24/7 Discord Support", "Instant Access", "No Commitment"],
+          sellAuthProductId: "your_daily_product_id",
+          popular: false
+        },
+        {
+          name: "Weekly",
+          price: "$15",
+          period: "per week",
+          description: "Great for short-term grinding",
+          features: ["All Features Included", "24/7 Discord Support", "Priority Setup Help", "Save vs Daily Rate", "Perfect for Events"],
+          sellAuthProductId: "your_weekly_product_id",
+          popular: true
+        },
+        {
+          name: "Monthly",
+          price: "$30",
+          period: "per month",
+          description: "Most popular for serious players",
+          features: ["All Features Included", "24/7 Discord Support", "Priority Support", "Great Value Option", "Season Pass Completion"],
+          sellAuthProductId: "your_monthly_product_id",
+          popular: false
+        },
+        {
+          name: "90 Days",
+          price: "$50",
+          period: "per 90 days",
+          description: "Maximum value for dedicated grinders",
+          features: ["All Features Included", "24/7 Discord Support", "VIP Support Channel", "Best Value Per Day", "Complete Multiple Seasons"],
+          sellAuthProductId: "your_90day_product_id",
+          popular: false
+        }
+      ] %}
+
+      {% for plan in plans %}
+        <div class="bg-[#131314] rounded-lg border {{ plan.popular ? 'border-[#5285a6] ring-2 ring-[#5285a6]/20' : 'border-[#30363d]' }} overflow-hidden transition-all duration-300 hover:shadow-[0_0_20px_rgba(82,133,166,0.2)] relative">
+          {% if plan.popular %}
+            <div class="absolute top-0 right-0 bg-[#5285a6] text-white text-xs font-bold py-1 px-3 rounded-bl-lg">
+              POPULAR
+            </div>
+          {% endif %}
+
+          <div class="p-6">
+            <h3 class="text-xl font-bold text-white mb-2">{{ plan.name }}</h3>
+            <div class="mb-4">
+              <span class="text-2xl md:text-3xl font-bold text-white">{{ plan.price }}</span>
+              <span class="text-[#cccccc] ml-1 text-sm">{{ plan.period }}</span>
+            </div>
+            <p class="text-[#cccccc] mb-6 text-sm">{{ plan.description }}</p>
+
+            <div class="mb-6">
+              <button 
+                onclick="handleCheckout('{{ plan.sellAuthProductId }}', '{{ plan.name }}')"
+                class="w-full {{ plan.popular ? 'bg-white/5 backdrop-blur-md border border-[#5285a6] text-white hover:bg-white/10 hover:shadow-[0_0_20px_rgba(82,133,166,0.4)]' : 'bg-[#30363d] hover:bg-[#30363d]/80' }} transition-all duration-300 px-4 py-2 rounded-md"
+                id="checkout-btn-{{ loop.index }}"
+              >
+                Get {{ plan.name }} Access
+              </button>
+            </div>
+
+            <ul class="space-y-2">
+              {% for feature in plan.features %}
+                <li class="flex items-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#4CAF50" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2 flex-shrink-0">
+                    <polyline points="20 6 9 17 4 12"></polyline>
+                  </svg>
+                  <span class="text-[#cccccc] text-sm">{{ feature }}</span>
+                </li>
+              {% endfor %}
+            </ul>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Value Comparison -->
+    <div class="mt-12 text-center">
+      <div class="bg-[#131314] rounded-lg p-6 max-w-4xl mx-auto border border-[#30363d]">
+        <h3 class="text-xl font-bold text-white mb-4">💰 Value Comparison</h3>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+          <div class="text-center">
+            <div class="text-[#cccccc]">Daily Rate</div>
+            <div class="text-white font-bold">$5.00/day</div>
+          </div>
+          <div class="text-center">
+            <div class="text-[#cccccc]">Weekly Rate</div>
+            <div class="text-white font-bold">$2.14/day</div>
+            <div class="text-[#4CAF50] text-xs">Save 57%</div>
+          </div>
+          <div class="text-center">
+            <div class="text-[#cccccc]">Monthly Rate</div>
+            <div class="text-white font-bold">$1.00/day</div>
+            <div class="text-[#4CAF50] text-xs">Save 80%</div>
+          </div>
+          <div class="text-center">
+            <div class="text-[#cccccc]">90-Day Rate</div>
+            <div class="text-white font-bold">$0.56/day</div>
+            <div class="text-[#4CAF50] text-xs">Save 89%</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center mt-12">
+      <p class="text-[#cccccc] mb-4">
+        All payments are processed securely through SellAuth. We accept cards, PayPal, and cryptocurrency.
+      </p>
+      <div class="flex items-center justify-center gap-6 opacity-60">
+        <span class="text-sm text-[#cccccc]">Visa</span>
+        <span class="text-sm text-[#cccccc]">Mastercard</span>
+        <span class="text-sm text-[#cccccc]">PayPal</span>
+        <span class="text-sm text-[#cccccc]">Crypto</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Loading states for checkout buttons
+  let loadingPlan = null;
+  
+  function setButtonLoading(buttonId, isLoading) {
+    const button = document.getElementById(buttonId);
+    if (!button) return;
+    
+    if (isLoading) {
+      button.innerHTML = `
+        <svg class="animate-spin -ml-1 mr-2 h-4 w-4 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+        </svg>
+        Processing...
+      `;
+      button.disabled = true;
+    } else {
+      // Reset to original text
+      const planName = button.textContent.replace('Processing...', '').trim();
+      button.innerHTML = `Get ${planName} Access`;
+      button.disabled = false;
+    }
+  }
+  
+  async function handleCheckout(productId, planName) {
+    const buttonId = Array.from(document.querySelectorAll('[id^="checkout-btn-"]')).find(
+      btn => btn.textContent.includes(planName)
+    )?.id;
+    
+    if (buttonId) {
+      setButtonLoading(buttonId, true);
+    }
+    
+    try {
+      const response = await fetch('/api/sellauth/create-checkout', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          product_id: productId,
+          return_url: `${window.location.origin}/success`,
+          cancel_url: `${window.location.origin}/pricing`,
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error('Failed to create checkout session');
+      }
+      
+      const data = await response.json();
+      window.location.href = data.checkout_url;
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Failed to create checkout session. Please try again.');
+      
+      if (buttonId) {
+        setButtonLoading(buttonId, false);
+      }
+    }
+  }
+</script>
